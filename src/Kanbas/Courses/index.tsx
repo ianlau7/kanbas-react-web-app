@@ -6,9 +6,9 @@ import Modules from "./Modules";
 import Home from "./Home";
 import Assignments from "./Assignments";
 
-function Courses({ courses }: { courses: any[]; }) {
+function Courses({ _courses }: { _courses: any[]; }) {
   const { courseId } = useParams();
-  const course = courses.find((course) => course._id === courseId);
+  const course = _courses.find((course) => course._id === courseId);
   return (
     <div>
       <h1><HiMiniBars3 /> Course {course?.name}</h1>

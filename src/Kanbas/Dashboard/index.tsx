@@ -48,6 +48,7 @@ function Dashboard({ courses, course, setCourse, addNewCourse,
       <button onClick={addNewCourse} >
         Add
       </button>
+      &nbsp;
       <button onClick={updateCourse} >
         Update
       </button> <hr />
