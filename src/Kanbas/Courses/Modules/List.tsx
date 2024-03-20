@@ -11,6 +11,7 @@ import {
   setModule,
 } from "./reducer";
 import { KanbasState } from "../../store";
+import { ModuleType } from "../../Dashboard";
 
 function ModuleList() {
   const { courseId } = useParams();
@@ -22,9 +23,9 @@ function ModuleList() {
   //   course: courseId,
   //   _id: 0,
   // });
-  const modulesList = useSelector((state: KanbasState) => 
+  const modulesList: ModuleType[] = useSelector((state: KanbasState) => 
     state.modulesReducer.modules);
-  const module = useSelector((state: KanbasState) => 
+  const module: ModuleType = useSelector((state: KanbasState) => 
     state.modulesReducer.module);
   const dispatch = useDispatch();
 
@@ -49,7 +50,7 @@ function ModuleList() {
   //   });
   //   setModuleList(newModuleList);
   // };
-  // const [selectedModule, setSelectedModule] = useState(modulesList[0]);
+  const [selectedModule, setSelectedModule] = useState(modulesList[0]);
   return (
     <>
     <div className="button-container">
@@ -82,9 +83,9 @@ function ModuleList() {
         .filter((module) => module.course === courseId)
         .map((module, index) => (
           <li key={index}
-            // className="list-group-item"
-            // onClick={() => setSelectedModule(module)}>
-            className="list-group-item">
+            className="list-group-item"
+            onClick={() => setSelectedModule(module)}>
+            {/* // className="list-group-item"> */}
             <button
               onClick={() => dispatch(setModule(module))}>
               Edit
@@ -104,7 +105,7 @@ function ModuleList() {
                 <FaEllipsisV className="ms-2" />
               </span>
             </div>
-            {/* {selectedModule._id === module._id && (
+            {selectedModule._id === module._id && (
               <ul className="list-group">
                 {module.lessons?.map((lesson, index) => (
                   <li className="list-group-item" key={index}>
@@ -117,7 +118,7 @@ function ModuleList() {
                   </li>
                 ))}
               </ul>
-            )} */}
+            )}
           </li>
         ))}
       </ul>

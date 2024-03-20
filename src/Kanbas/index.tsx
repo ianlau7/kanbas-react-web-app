@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 function Kanbas() {
   const [_courses, setCourses] = useState<any[]>(courses);
   const [course, setCourse] = useState({
-    _id: Math.floor(Math.random() * 50), name: "New Course", number: "New Number",
+    _id: String(Math.floor(Math.random() * 50)), name: "New Course", number: "New Number",
     startDate: "2023-09-10", endDate: "2023-12-15",
     image: "/images/smile.png"
   });

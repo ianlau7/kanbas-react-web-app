@@ -1,11 +1,64 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { courses } from "../Database";
-function Dashboard({ courses, course, setCourse, addNewCourse,
-  deleteCourse, updateCourse }: {
-  courses: any[]; course: any; setCourse: (course: any) => void;
-  addNewCourse: () => void; deleteCourse: (course: any) => void;
-  updateCourse: () => void; }) {
+export interface CoursesType {
+  _id: string;
+  name: string;
+  number: string;
+  startDate: string;
+  endDate: string;
+  image: string;
+};
+export interface ModuleType {
+  _id: string,
+  name: string,
+  description: string,
+  course: string,
+  lessons: LessonType[]
+};
+export interface LessonType {
+  _id: string,
+  name: string,
+  description: string,
+  module: string
+};
+
+function Dashboard({
+  courses,
+  course,
+  setCourse,
+  addNewCourse,
+  deleteCourse,
+  updateCourse,
+}: {
+  courses: {
+    _id: string;
+    name: string;
+    number: string;
+    startDate: string;
+    endDate: string;
+    image: string;
+  }[];
+  course: {
+    _id: string;
+    name: string;
+    number: string;
+    startDate: string;
+    endDate: string;
+    image: string;
+  };
+  setCourse: (course: {
+    _id: string;
+    name: string;
+    number: string;
+    startDate: string;
+    endDate: string;
+    image: string;
+  }) => void;
+  addNewCourse: () => void;
+  deleteCourse: (id: string) => void;
+  updateCourse: () => void;
+}) {
   const [_courses, setCourses] = useState(courses);
   // const [course, setCourse] = useState({
   //   _id: "0", name: "New Course", number: "New Number",
